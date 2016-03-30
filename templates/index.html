@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aquaponics Web Monitoring System</title>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}"/>
+    </head>
+    
+    <body>
+        <table>
+            <tr><h1>
+                Aquaponics Web Monitoring System<br/>
+                {% if status %}
+                    STATUS: <h1 id="green"> ONLINE </h1>
+                {% else %}
+                    STATUS: <h1 id="red"> OFFLINE </h1>
+                {% endif %}
+            </h1></tr>
+            <tr>
+                <td>
+                    <h1>Tank Temperature</h1>
+                    <img src="{{ url_for('static', filename='tt.png') }}"/>
+                    <p>Most recent result: 99</p>
+                </td>
+                <td>
+                    <h1>Room Temperature</h1>
+                    <img src="{{ url_for('static', filename='rt.png') }}"/>
+                    <p>Most recent result: 2</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Room Humidity</h1>
+                    <img src="{{ url_for('static', filename='rh.png') }}"/>
+                    <p>Most recent result: 43</p>
+                </td>
+                <td>
+                    <h1>Tank pH</h1>
+                    <img src="{{ url_for('static', filename='tp.png') }}"/>
+                    <p>Most recent result: 66</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>Room Lighting</h1>
+                    <img src="{{ url_for('static', filename='rl.png') }}"/>
+                    <p>Most recent result: 43</p>
+                </td>
+                <td>
+                    <h1>Water Level</h1>
+                    <img src="{{ url_for('static', filename='wl.png') }}"/>
+                    <p>Most recent result: 66</p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

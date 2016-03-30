@@ -1,0 +1,31 @@
+html{
+    background-color:#51627e;
+    font-family: Monospace; 
+}
+
+h1{
+    margin: auto;
+    text-align: center;
+}
+
+p{
+    margin: auto;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+}
+
+img{
+    width: 100%;
+    margin: auto;
+}
+
+#green{
+    color: green
+}
+
+#red{ 
+    color: red
+}
