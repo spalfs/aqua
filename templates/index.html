@@ -35,84 +35,83 @@
                 <td>
                     <h1>Room Temperature</h1>
                     <div data-netdata="aqua.basic"
-                         data-chart-library="gauge"
+                         data-chart-library="easypiechart"
+                         data-dimension="roomTemperature"
+                         data-title=" "
+                         data-width=60%
+                         data-units="degrees (F)"
                          data-after="-60"
                          data-points="60"
                          data-colors="#ff5555">
                     </div>   
                 </td>
                 <td>
-                    <h1>Tank Temperature</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random2"
-                         data-chart-library="gauge"
-                         data-after="-60"
-                         data-points="60"
-                         data-colors="#55ffff">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <h1>Room Humidity</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random3"
-                         data-chart-library="gauge"
+                         data-chart-library="easypiechart"
+                         data-title=" "
+                         data-width=60%
+                         data-units="percent"
                          data-after="-60"
                          data-points="60"
                          data-colors="#55ffaa">
                     </div>
                 </td>
                 <td>
-                    <h1>Tank pH</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random1"
-                         data-chart-library="gauge"   
-                         data-after="-60"
-                         data-points="60">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <h1>Room Lighting</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random1"
-                         data-chart-library="gauge"
+                         data-chart-library="easypiechart"
+                         data-title=" "
+                         data-width=60%
+                         data-units="percent"
                          data-after="-60"
                          data-points="60"
                          data-colors="#5555ff">
                     </div>
-                </td>
+                </td> 
+            </tr>
+            <tr>
+                <td>
+                    <h1>Tank Temperature</h1>
+                    <div data-netdata="example.random"
+                         data-dimensions="random2"
+                         data-chart-library="easypiechart"
+                         data-title=" "
+                         data-width=60%
+                         data-units="degrees (F)"
+                         data-after="-60"
+                         data-points="60"
+                         data-colors="#55ffff">
+                    </div>
+                </td> 
+                <td>
+                    <h1>Tank pH</h1>
+                    <div data-netdata="example.random"
+                         data-dimensions="random1"
+                         data-chart-library="easypiechart"   
+                         data-title=" "
+                         data-units=" "
+                         data-width=60%
+                         data-after="-60"
+                         data-points="60">
+                    </div>
+                </td> 
                 <td>
                     <h1>Tank Water Level</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random3"
-                         data-chart-library="gauge"
+                         data-chart-library="easypiechart"
+                         data-width=60%
+                         data-title=" "
+                         data-units="inches from full"
                          data-after="-60"
                          data-points="60"
                          data-colors="#ffaa55">
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1>CPU Utilization</h1>
-                    <div data-netdata="system.cpu"
-                         data-chart-library="gauge"
-                         data-after="-60"
-                         data-points="60">
-                    </div> 
-                </td>
-                <td>
-                    <h1>System Load</h1>
-                    <div data-netdata="system.load"
-                         data-chart-library="gauge"
-                         data-after="-60"
-                         data-points="60">
-                    </div> 
-                </td>
-            </tr> 
+                </td> 
+            </tr>      
         </table> 
 </body>
 </html>
