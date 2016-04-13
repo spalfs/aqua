@@ -17,8 +17,8 @@ update_every *= 1000
 get_millis = lambda: int(round(time.time() * 1000))
 
 try:
-    sys.stdout.write('CHART example.tferreira tferreira "Netdata Issue 206" "my unit" "my family" "my category" line 100000 %s\n' % int(update_every / 1000))
-    sys.stdout.write('DIMENSION value1 "random number 1" absolute 1 1\n')
+    sys.stdout.write('CHART aqua.basic "Basic Title" "Basic Unit" "Basic Family" "Basic Category" line 100000 %s\n' % int(update_every / 1000))
+    sys.stdout.write('DIMENSION BasicValue "basic random number" absolute 1 1\n')
     sys.stdout.flush()
 except IOError as e:
     sys.stderr.write("Failed to send.")
@@ -43,8 +43,8 @@ while True:
             dt = 0
 
         try:
-            sys.stdout.write('BEGIN example.tferreira %s\n' % (dt * 1000))
-            sys.stdout.write('SET value1 = %s\n' % value1)
+            sys.stdout.write('BEGIN aqua.basic %s\n' % (dt * 1000))
+            sys.stdout.write('SET BasicValue = %s\n' % value1)
             sys.stdout.write('END\n')
             sys.stdout.flush()
         except IOError as e:
