@@ -27,15 +27,15 @@
                 {% endif %}
             </h1></tr>
             <tr>
-                <h1>Now |
-                <a href="recent.html">Recent</a> |
+                <h1><a href="/">Now</a>
+                | Recent |
                 <a href="all.html">All</a></h1>
             </tr>
             <tr>
                 <td>
                     <h1>Room Temperature</h1>
                     <div data-netdata="aqua.basic"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60"
                          data-colors="#ff5555">
@@ -45,7 +45,7 @@
                     <h1>Tank Temperature</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random2"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60"
                          data-colors="#55ffff">
@@ -57,7 +57,7 @@
                     <h1>Room Humidity</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random3"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60"
                          data-colors="#55ffaa">
@@ -67,7 +67,6 @@
                     <h1>Tank pH</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random1"
-                         data-chart-library="gauge"   
                          data-after="-60"
                          data-points="60">
                     </div>
@@ -78,7 +77,7 @@
                     <h1>Room Lighting</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random1"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60"
                          data-colors="#5555ff">
@@ -88,7 +87,7 @@
                     <h1>Tank Water Level</h1>
                     <div data-netdata="example.random"
                          data-dimensions="random3"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60"
                          data-colors="#ffaa55">
@@ -99,7 +98,7 @@
                 <td>
                     <h1>CPU Utilization</h1>
                     <div data-netdata="system.cpu"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60">
                     </div> 
@@ -107,12 +106,30 @@
                 <td>
                     <h1>System Load</h1>
                     <div data-netdata="system.load"
-                         data-chart-library="gauge"
+                         data-chart-library="dygraph"
                          data-after="-60"
                          data-points="60">
                     </div> 
                 </td>
-            </tr> 
+            </tr>
+            <tr>
+                <td>
+                    <h1>Disk I/O</h1>
+                    <div data-netdata="system.io"
+                         data-chart-library="dygraph"
+                         data-after="-60"
+                         data-points="60">
+                    </div> 
+                </td>
+                <td>
+                    <h1>System Memory</h1>
+                    <div data-netdata="system.ram"
+                         data-chart-library="dygraph"
+                         data-after="-60"
+                         data-points="60">
+                    </div> 
+                </td>
+            </tr>
         </table> 
 </body>
 </html>
