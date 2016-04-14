@@ -18,5 +18,10 @@ def all():
     status = False
     return render_template('all.html', status = status)
 
+@app.route('/roomtemp.html')
+def roomtemp():
+    status = False
+    return render_template('roomtemp.html', status = status)
+
 if __name__ == '__main__':
     app.run(debug=True)

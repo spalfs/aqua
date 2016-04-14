@@ -19,7 +19,7 @@ table{
     margin-right:auto;   
     text-align: center;
     width: 90%;
-    table-layout: fixed;
+    table-layout:;
 }
 
 img{
