@@ -24,4 +24,4 @@ def roomtemp():
     return render_template('roomtemp.html', status = status)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
