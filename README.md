@@ -4,17 +4,16 @@ Installation for Debian:
 
     Install dependencies -
         "su"
-        "apt install python3-flask zlib1g-dev gcc make git autoconf autogen automake pkg-config" 
+        "apt install python3-flask zlib1g-dev uuid-dev gcc make git autoconf autogen automake pkg-config" 
         "exit"
 
     Install netdata -
         "su"
-        "cd && mkdir nd && cd nd"
-        "git clone https://github.com/firehol/netdata.git --depth=1"
+        "git clone https://github.com/firehol/netdata"
         "cd netdata"
         "./netdata-installer.sh"
         Enter
-	"exit"
+	    "exit"
 
     Then run it -
         "su"
@@ -30,7 +29,6 @@ Installation for Debian:
 
     The python plugins must be moved into netdata's plugin folder - 
         "su"
-        "cd plugins/"
         "cp *.plugin /usr/libexec/netdata/plugins.d/"
         "exit"
     
