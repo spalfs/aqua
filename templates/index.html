@@ -12,7 +12,7 @@
     <meta name="apple-movile-web-app-status-bar-style" content="black-translucent">
 
     <script>var netdataTheme = 'slate';</script>
-    <script type="text/javascript" src="http://localhost:19999/dashboard.js"></script>
+    <script type="text/javascript" src="http://192.168.178.53:19999/dashboard.js"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}"/>
 
 </head>
@@ -47,9 +47,9 @@
                 </td>
                 <td>
                     <h1>Room Humidity</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random3"
+                    <div data-netdata="aqua.basic"
                          data-chart-library="easypiechart"
+                         data-dimensions="roomTemperature"
                          data-title=" "
                          data-width=60%
                          data-units="percent"
