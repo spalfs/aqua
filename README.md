@@ -13,7 +13,7 @@ Installation for Debian:
         "cd netdata"
         "./netdata-installer.sh"
         Enter
-	    "exit"
+        "exit"
 
     Then run it -
         "su"
