@@ -4,7 +4,7 @@ Installation for Debian:
 
     Install dependencies -
         "su"
-        "apt install python3-flask zlib1g-dev uuid-dev gcc make git autoconf autogen automake pkg-config" 
+        "apt install python3-flask zlib1g-dev uuid-dev gcc make git autoconf autogen automake pkg-config ipython3 apache2 libapache2-mod-wsgi-py3" 
         "exit"
 
     Install netdata -
