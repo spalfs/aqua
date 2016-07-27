@@ -15,12 +15,12 @@ Installation for Debian:
         Enter
         "exit"
 
-    Then run it -
+    Then run it (if it is not already running)-
         "su"
         "/usr/sbin/netdata"
         "exit"
     
-    If you want it to run at every boot - 
+    Or if you want it to run at every boot - 
         "su"
         "nano /etc/rc.local"
         Append "/usr/sbin/netdata" before the exit
@@ -32,7 +32,24 @@ Installation for Debian:
         "cp *.plugin /usr/libexec/netdata/plugins.d/"
         "exit"
     
-    Now you can run with
-        ./server.py
-
+    Now lets set up apache - 
+	cp /apache/run.conf /etc/apache2/sites-available/
+	a2dissite 000-default
+	a2ensite run
+	service apache2 reload
     
+    Final Touches -
+	Get local ip
+	"ifconfig | grep inet"
+	Replace line 15 from templates/*.html to your local ip
+	"...src=XXX.XXX.XXX.XXX:19999/dashboard.js"
+	Now access within your network with your local ip through the browser :)
+
+    THINGS TO DO - 
+	Look into new netdata python plugin system and reimplement ours
+	Write .ino
+	See if merging into one .html file is worth doing (probably is)
+	Either way *.html's must be rewritten
+	Look if local dns server is worth doing
+	Write python script to read from usb, write to database, and pipe to netdata
+	Add matplotlib image generator to server
