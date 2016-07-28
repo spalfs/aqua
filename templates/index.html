@@ -40,9 +40,11 @@
                     <a href="recent.html"> Recent </a>|
                     All</h1>
                 {% endif %}
-            </tr>
+            </tr> 
+            {% for graph in graphs %}
+            {% if (loop.index == 1 or loop.index == 4) %}
             <tr>
-            {% for graph in graphs ½}
+            {% endif %}
                 <td>
                     <h1>{{ graph.title }}</h1></a>
                     <div data-netdata={{ graph.data }}
@@ -56,48 +58,10 @@
                          data-colors={{ graph.color }}>
                     </div>   
                 </td>
-            {% endfor %}
+            {% if (loop.index == 3 or loop.index == 6) %}
             </tr>
-            <tr>
-                <td>
-                    <h1>Tank Temperature</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random2"
-                         data-chart-library="easypiechart"
-                         data-title=" "
-                         data-width=60%
-                         data-units="degrees (F)"
-                         data-after="-60"
-                         data-points="60"
-                         data-colors="#55ffff">
-                    </div>
-                </td> 
-                <td>
-                    <h1>Tank pH</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random1"
-                         data-chart-library="easypiechart"   
-                         data-title=" "
-                         data-units=" "
-                         data-width=60%
-                         data-after="-60"
-                         data-points="60">
-                    </div>
-                </td> 
-                <td>
-                    <h1>Tank Water Level</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random3"
-                         data-chart-library="easypiechart"
-                         data-width=60%
-                         data-title=" "
-                         data-units="inches from full"
-                         data-after="-60"
-                         data-points="60"
-                         data-colors="#ffaa55">
-                    </div>
-                </td> 
-            </tr>      
+            {% endif %}
+            {% endfor %}      
         </table> 
 </body>
 </html>
