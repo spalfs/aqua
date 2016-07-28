@@ -10,7 +10,7 @@ class graph():
 def createGraphs():
     graphs = list()
 
-    graphs.append(graph("Room Temperature", "aqua.basic", "degrees (F)", "#ff5555"))
+    graphs.append(graph("Room Temperature", "example.python_random", "degrees (F)", "#ff5555"))
     graphs.append(graph("Room Humidity", "aqua.basic", "percent", "#55ffaa"))
     graphs.append(graph("Room Lighting", "aqua.basic", "percent", "#5555ff"))
     graphs.append(graph("Tank Temperature", "aqua.basic", "degrees (F)", "#55ffff"))

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template
-from scripts import createGraphs, createSystemGraphs, getIP
+from scripts.scripts import createGraphs, createSystemGraphs, getIP
 app = Flask(__name__)
 
 ip = getIP("wlan0")
