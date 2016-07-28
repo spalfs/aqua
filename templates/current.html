@@ -8,19 +8,14 @@
                     <h1>{{ graph.title }}</h1></a>
                     <div data-netdata={{ graph.data }}
                          data-chart-library="easypiechart"
-                         data-dimension="roomTemperature"
                          data-title=" "
                          data-width=60%
                          data-units={{ graph.units }}
-                         data-after="-60"
-                         data-points="60"
                          data-colors={{ graph.color }}>
                     </div>   
                 </td>
             {% if (loop.index == 3 or loop.index == 6) %}
             </tr>
             {% endif %}
-            {% endfor %}      
-    </table> 
-</body>
+        {% endfor %}      
 {% endblock %}

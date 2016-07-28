@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template
-from graphs import createGraphs
+from graphs import createGraphs, createSystemGraphs
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,17 +13,14 @@ def index():
 @app.route('/recent.html')
 def recent():
     status = False
-    return render_template('recent.html', status = status, layout = "recent")
+    graphs = createGraphs()
+    systemGraphs = createSystemGraphs()
+    return render_template('recent.html', status = status, layout = "recent", graphs = graphs, systemGraphs = systemGraphs)
 
 @app.route('/all.html')
 def all():
     status = False
     return render_template('all.html', status = status, layout = "all")
-
-@app.route('/roomtemp.html')
-def roomtemp():
-    status = False
-    return render_template('roomtemp.html', status = status)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)

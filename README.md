@@ -48,8 +48,6 @@ Installation for Debian:
     THINGS TO DO - 
         Look into new netdata python plugin system and reimplement ours
         Arduino .ino
-        See if merging into one .html file is worth doing (probably is)
-        Either way *.html's must be rewritten
         Look if local dns server is worth doing
         Python script to read from usb, write to database, and pipe to netdata (started with .wsgi, server, or rc.local)
         Add matplotlib image generator to server

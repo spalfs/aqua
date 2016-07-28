@@ -17,3 +17,12 @@ def createGraphs():
 
     return graphs
 
+def createSystemGraphs():
+    graphs = list()
+
+    graphs.append(graph("CPU Utilization", "system.cpu"," "," "))
+    graphs.append(graph("System Load", "system.load"," "," "))
+    graphs.append(graph("Disk I/O", "system.io"," "," "))
+    graphs.append(graph("System Memory", "system.ram"," "," "))
+
+    return graphs

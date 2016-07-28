@@ -1,41 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>Aquaponics Web Monitoring System</title>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-movile-web-app-status-bar-style" content="black-translucent">
-
-    <script>var netdataTheme = 'slate';</script>
-    <script type="text/javascript" src="http://192.168.178.53:19999/dashboard.js"></script>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}"/>
-
-</head>
-<body>
-   <table>
-            <tr><h1>
-                Aquaponics Web Monitoring System<br/>
-                {% if status %}
-                    STATUS: <h1 id="green"> ONLINE </h1>
-                {% else %}
-                    STATUS: <h1 id="red"> OFFLINE </h1>
-                {% endif %}
-            </h1></tr>
-            <tr>
-                <h1><a href="/">Now </a>|
-                <a href="recent.html"> Recent </a>|
-                All</h1>
-            </tr>
-            <tr><h1>Matplotlib</td></td>
-            <tr>
-                <img style='width:50%;margin:auto;display:block;' src="{{ url_for('static',filename='plot_bmh.png') }}"/>
-                
-            </tr>
-        </table> 
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <tr>
+        <h1>Matplotlib</h1>
+    </tr>
+    <tr>
+        <img style='width:50%;margin:auto;display:block;' src="{{ url_for('static',filename='plot_bmh.png') }}"/>
+    </tr>
+{% endblock %}

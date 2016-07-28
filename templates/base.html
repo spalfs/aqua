@@ -12,7 +12,7 @@
     <meta name="apple-movile-web-app-status-bar-style" content="black-translucent">
 
     <script>var netdataTheme = 'slate';</script>
-    <script type="text/javascript" src="http://10.12.224.254:19999/dashboard.js"></script>
+    <script type="text/javascript" src="http://192.168.178.57:19999/dashboard.js"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}"/>
 
 </head>
@@ -36,11 +36,13 @@
             | Recent |
             <a href="all.html">All</a></h1>
         {% elif layout == "all" %}
-            <h1><a href="/">Now </a>|
-            <a href="recent.html"> Recent </a>|
+            <h1><a href="/">Now</a> |
+            <a href="recent.html">Recent</a> |
             All</h1>
             {% endif %}
         </tr>
         {% block content %}
         {% endblock %}
+    </table>
 </body>
+</html>
