@@ -12,7 +12,7 @@
     <meta name="apple-movile-web-app-status-bar-style" content="black-translucent">
 
     <script>var netdataTheme = 'slate';</script>
-    <script type="text/javascript" src="http://192.168.178.62:19999/dashboard.js"></script>
+    <script type="text/javascript" src="http://10.12.224.254:19999/dashboard.js"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}"/>
 
 </head>
@@ -27,50 +27,36 @@
                 {% endif %}
             </h1></tr>
             <tr>
-                <h1>Now |
-                <a href="recent.html">Recent</a> |
-                <a href="all.html">All</a></h1>
+                {% if layout == "now" %}
+                    <h1>Now |
+                    <a href="recent.html">Recent</a> |
+                    <a href="all.html">All</a></h1>
+                {% elif layout == "recent" %}
+                    <h1><a href="/">Now</a>
+                    | Recent |
+                    <a href="all.html">All</a></h1>
+                {% elif layout == "all" %}
+                    <h1><a href="/">Now </a>|
+                    <a href="recent.html"> Recent </a>|
+                    All</h1>
+                {% endif %}
             </tr>
             <tr>
+            {% for graph in graphs ½}
                 <td>
-                    <a href="roomtemp.html"><h1>Room Temperature</h1></a>
-                    <div data-netdata="aqua.basic"
+                    <h1>{{ graph.title }}</h1></a>
+                    <div data-netdata={{ graph.data }}
                          data-chart-library="easypiechart"
                          data-dimension="roomTemperature"
                          data-title=" "
                          data-width=60%
-                         data-units="degrees (F)"
+                         data-units={{ graph.units }}
                          data-after="-60"
                          data-points="60"
-                         data-colors="#ff5555">
+                         data-colors={{ graph.color }}>
                     </div>   
                 </td>
-                <td>
-                    <h1>Room Humidity</h1>
-                    <div data-netdata="aqua.basic"
-                         data-chart-library="easypiechart"
-                         data-dimensions="roomTemperature"
-                         data-title=" "
-                         data-width=60%
-                         data-units="percent"
-                         data-after="-60"
-                         data-points="60"
-                         data-colors="#55ffaa">
-                    </div>
-                </td>
-                <td>
-                    <h1>Room Lighting</h1>
-                    <div data-netdata="example.random"
-                         data-dimensions="random1"
-                         data-chart-library="easypiechart"
-                         data-title=" "
-                         data-width=60%
-                         data-units="percent"
-                         data-after="-60"
-                         data-points="60"
-                         data-colors="#5555ff">
-                    </div>
-                </td> 
+            {% endfor %}
             </tr>
             <tr>
                 <td>
