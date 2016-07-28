@@ -8,17 +8,17 @@ app = Flask(__name__)
 def index():
     status = False
     graphs = createGraphs()
-    return render_template('index.html', status = status, layout = "now", graphs = graphs)
+    return render_template('current.html', status = status, layout = "now", graphs = graphs)
 
 @app.route('/recent.html')
 def recent():
     status = False
-    return render_template('index.html', status = status, layout = "recent")
+    return render_template('recent.html', status = status, layout = "recent")
 
 @app.route('/all.html')
 def all():
     status = False
-    return render_template('index.html', status = status, layout = "all")
+    return render_template('all.html', status = status, layout = "all")
 
 @app.route('/roomtemp.html')
 def roomtemp():
