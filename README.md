@@ -20,7 +20,7 @@ Installation for Debian:
         "/usr/sbin/netdata"
         "exit"
     
-    Or if you want it to run at every boot - 
+    Also make it run at every boot - 
         "su"
         "nano /etc/rc.local"
         Append "/usr/sbin/netdata" before the exit
@@ -33,17 +33,17 @@ Installation for Debian:
         "exit"
     
     Now lets set up apache - 
+        "su"
         "cp /apache/run.conf /etc/apache2/sites-available/"
         "a2dissite 000-default"
         "a2ensite run"
         "service apache2 reload"
-    
+        "exit"
+
     Final Touches -
-        Get local ip
-        "ifconfig | grep inet"
-        Replace line 15 from templates/*.html to your local ip
-        "...src=XXX.XXX.XXX.XXX:19999/dashboard.js"
-        Now access within your network with your local ip through the browser :)
+        You should now be able to access the server via its local IP
+        The getIP() function has only been tested if the the host is connected to the network over "wlan0"
+        If you are having issues, goto line 7 of server.py and set the ip yourself
 
     THINGS TO DO - 
         Look into new netdata python plugin system and reimplement ours

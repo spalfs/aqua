@@ -1,3 +1,5 @@
+import subprocess
+
 class graph():
     def __init__(self,title,data,units,color):
         self.title = title
@@ -26,3 +28,18 @@ def createSystemGraphs():
     graphs.append(graph("System Memory", "system.ram"," "," "))
 
     return graphs
+
+def getIP(card):
+    proc = subprocess.Popen("/sbin/ifconfig",stdout=subprocess.PIPE)
+    while True:
+        line = proc.stdout.readline()
+        if not line:
+            break
+        if card in str(line):
+            line = proc.stdout.readline()
+            line = str(line)
+            #im sorry
+            ip = line.split(" ")[11][5:]
+
+    return ip
+
