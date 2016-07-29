@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Installing dependencies
+apt update
 apt install -y python3 python3-flask zlib1g-dev uuid-dev gcc make git autoconf autogen
 apt install -y automake pkg-config ipython3 apache2 libapache2-mod-wsgi-py3 sed 
 
