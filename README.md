@@ -52,3 +52,4 @@ Installation for Debian:
         Add matplotlib image generator to server
         Look into making the host a wifi connectable switch
         Flesh out .ino
+        Make installer
