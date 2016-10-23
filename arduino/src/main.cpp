@@ -1,11 +1,15 @@
-void setup(){Serial.begin(9600);}
+#include <Arduino.h>
+
+void setup(){
+    Serial.begin(9600);
+}
 
 void loop(){
     // Wait for go ahead 
     while(true){
-        if(Serial.readString())
+        if(Serial.readString()!="")
             break;
-        delay(100);
+        delay(500);
     }
     // Collect Data
     String data;
