@@ -3,77 +3,80 @@
 #include <DHT22.h>
 #include <OneWire.h>
 
-// Globals
-int i;
+void wait(){
+    while(true){
+        if(Serial.readString()!="")
+            break;
+        delay(500);
+    }
+}
 
 // pH Sensor 
-//SoftwareSerial phSerial(2,3);
-//String pH = "";
-//bool phComplete = false;
+SoftwareSerial phSerial(4,5);
+
+String getpH(){
+    bool phComplete = false;
+    String pH;
+    while(phSerial.available())
+        phSerial.read();
+    delay(1000);
+    while(phSerial.available() &&!phComplete) {                     
+    	char inchar = (char)phSerial.read();             
+    	pH += inchar;
+    	if (inchar == '\r') {
+      	    phComplete = true;                  
+        }
+    }
+    return pH;
+}
 
 // DHT 22
 DHT22 dht(2);
 
 // TMP 
-OneWire ds(3);
+OneWire tmp(3);
 bool found = false;
-byte adata[12];
 byte addr[8];
-float waterTemp;
 
 float getWaterTemp(){
+    int i;
+    byte rdata[12];
     if(!found){
-        if (!ds.search(addr)){
-            ds.reset_search();
+        if (!tmp.search(addr)){
+            tmp.reset_search();
             return 0;
         }
         else
             found = true;
     }
   
-    ds.reset();
-    ds.select(addr);
-    ds.write(0x44, 1); 
+    tmp.reset();
+    tmp.select(addr);
+    tmp.write(0x44, 1); 
   
     delay(1000); 
 
-    ds.reset();
-    ds.select(addr);    
-    ds.write(0xBE); 
-    for ( i = 0; i < 9; i++) adata[i] = ds.read();
-    int16_t raw = (adata[1] << 8) | adata[0];
+    tmp.reset();
+    tmp.select(addr);    
+    tmp.write(0xBE); 
+    for ( i = 0; i < 9; i++) rdata[i] = tmp.read();
+    int16_t raw = (rdata[1] << 8) | rdata[0];
     return ((float)raw / 16.0) * 1.8 + 32.0;
 }
 
 // Pin Initialization
 void setup(){
     Serial.begin(9600);
-    //phSerial.begin(9600);
-    //pH.reserve(30);
+    phSerial.begin(9600); 
 }
 
 // Data RX/TX
 void loop(){
-    // Wait for go ahead 
-    while(true){
-        if(Serial.readString()!="")
-            break;
-        delay(500);
-    }
 
-    // Collect Data
-    /*
-    if(phSerial.available()){
-        char in = (char)phSerial.read();
-        pH += in;
-        if(in == '\r'){
-            phComplete = true;
-        }
-    }
-    */
-
+    // Wait for go ahead    
+    // wait();
+    
     dht.readData();
-    waterTemp = getWaterTemp();
 
     // Format Data
     String data;
@@ -85,18 +88,20 @@ void loop(){
     data += String(dht.getHumidity()) + "\n";
 
     data += "WTmp:";
-    data += String(waterTemp) + "\n";
-    
-    /*
-    if(phComplete)
-        data += pH;
-    else
-        data += "0,";
-    */ 
-    
+    data += String(getWaterTemp()) + "\n";
+
+    data += "WLvl:";
+    data += String(analogRead(A0)) + "\n";
+
+    data += "Lite:";
+    data += String(analogRead(A1)) + "\n";
+     
+    data += "pH:";
+    data += getpH() + "\n";
+
     // Send data Serially
     if (Serial)
         Serial.println(data);
     
-    delay(2000);
+    delay(1000);
 }
