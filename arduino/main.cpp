@@ -5,8 +5,14 @@
 
 void wait(){
     while(true){
-        if(Serial.readString()!="")
+        String r = Serial.readString();
+        if(r!=""){
+            if(r=="on")
+                digitalWrite(13,HIGH);
+            else if(r=="off")
+                digitalWrite(13,LOW);
             break;
+        }
         delay(500);
     }
 }
@@ -74,34 +80,44 @@ void setup(){
 void loop(){
 
     // Wait for go ahead    
-    // wait();
+    wait();
     
     dht.readData();
+
+    delay(1000);
 
     // Format Data
     String data;
     
-    data =  "RTmp:";
-    data += String(dht.getTemperatureF()) + "\n"; 
+    //data =  "RTmp:";
+    data += String(dht.getTemperatureF()) + ","; 
     
-    data += "Humi:";
-    data += String(dht.getHumidity()) + "\n";
+    //data += "Humi:";
+    data += String(dht.getHumidity()) + ",";
 
-    data += "WTmp:";
-    data += String(getWaterTemp()) + "\n";
+    //data += "WTmp:";
+    data += String(getWaterTemp()) + ",";
 
-    data += "WLvl:";
-    data += String(analogRead(A0)) + "\n";
+    //data += "WLvl:";
+    data += String(analogRead(A0)) + ",";
 
-    data += "Lite:";
-    data += String(analogRead(A1)) + "\n";
+    //data += "Right Lite:";
+    data += String(analogRead(A1)) + ",";
+
+    //data += "Left Lite:";
+    data += String(analogRead(A2)) + ",";
+
+    //data += "Below Lite:";
+    data += String(analogRead(A3)) + ",";
+
+    //data += "Room Lite:";
+    data += String(analogRead(A4)) + ",";
      
-    data += "pH:";
-    data += getpH() + "\n";
+    //data += "pH:";
+    data += getpH();
 
     // Send data Serially
     if (Serial)
         Serial.println(data);
     
-    delay(1000);
 }

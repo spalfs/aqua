@@ -10,12 +10,12 @@ class graph():
 def createGraphs():
     graphs = list()
 
-    graphs.append(graph("Room Temperature", "aqua.basic", "degrees (F)", "#ff5555"))
-    graphs.append(graph("Room Humidity", "aqua.basic", "percent", "#55ffaa"))
-    graphs.append(graph("Room Lighting", "aqua.basic", "percent", "#5555ff"))
-    graphs.append(graph("Tank Temperature", "aqua.basic", "degrees (F)", "#55ffff"))
-    graphs.append(graph("Tank pH", "aqua.basic", "ppi", "#ffaa55"))
-    graphs.append(graph("Tank Water Level", "aqua.basic", "inches", "#aaff55"))
+    graphs.append(graph("Room Temperature", "aqua.roomTemperature", "degrees (F)", "#ff5555"))
+    graphs.append(graph("Room Humidity", "aqua.roomHumidity", "percent", "#55ffaa"))
+    graphs.append(graph("Room Lighting", "aqua.roomLight", "percent", "#5555ff"))
+    graphs.append(graph("Tank Temperature", "aqua.tankTemperature", "degrees (F)", "#55ffff"))
+    graphs.append(graph("Tank pH", "aqua.tankpH", "ppi", "#ffaa55"))
+    graphs.append(graph("Tank Water Level", "aqua.tankLevel", "inches", "#aaff55"))
 
     return graphs
 
