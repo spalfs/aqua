@@ -2,6 +2,9 @@
 
 import serial
 from time import sleep, time
+from socket import socket, AF_INET, SOCK_STREAM
+
+sleep(5)
 
 comms = serial.Serial('/dev/ttyUSB0', 9600, timeout = None)
 w = "on"
@@ -32,10 +35,12 @@ while True:
         comms.write(str.encode("c"))
 
     r = str(comms.readline())
-    r = r.split(',')
-    r[0] = r[0].replace("b'","")
-    r[8] = r[8].replace("\\r","")
-    r[8] = r[8].replace("\\n","")
-    r[8] = r[8].replace("'","")
+    r = r.replace("\\r","")
+    r = r.replace("\\n","")
+
+    s = socket(AF_INET,SOCK_STREAM)
+    s.connect(("raspberrypi",6000))
+    s.sendall(str.encode(r))
+    s.close()
 
     print(r)

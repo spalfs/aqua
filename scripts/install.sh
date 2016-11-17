@@ -8,7 +8,8 @@ apt install -y automake pkg-config ipython3 apache2 libapache2-mod-wsgi-py3 sed
 # Installing netdata
 cd ~
 git clone https://github.com/firehol/netdata
-netdata/netdata-installer.sh
+cd netdata
+./netdata-installer.sh
 
 # Running netdata
 /usr/sbin/netdata

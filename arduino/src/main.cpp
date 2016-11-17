@@ -22,15 +22,16 @@ SoftwareSerial phSerial(4,5);
 
 String getpH(){
     bool phComplete = false;
-    String pH;
-    while(phSerial.available())
-        phSerial.read();
-    delay(1000);
-    while(phSerial.available() &&!phComplete) {                     
-    	char inchar = (char)phSerial.read();             
-    	pH += inchar;
-    	if (inchar == '\r') {
-      	    phComplete = true;                  
+    String pH = "";
+    while(pH == ""){
+        while(phSerial.available())
+            phSerial.read();
+        delay(1000);
+        while(phSerial.available() &&!phComplete) {                     
+    	    char inchar = (char)phSerial.read();             
+    	    pH += inchar;
+    	    if (inchar == '\r') 
+      	        phComplete = true;                  
         }
     }
     return pH;
