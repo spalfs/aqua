@@ -8,12 +8,12 @@ void wait(){
         String r = Serial.readString();
         if(r!=""){
             if(r=="on")
-                digitalWrite(13,HIGH);
+                digitalWrite(13,HIGH); 
             else if(r=="off")
                 digitalWrite(13,LOW);
             break;
         }
-        delay(500);
+        delay(50);
     }
 }
 
@@ -74,6 +74,7 @@ float getWaterTemp(){
 void setup(){
     Serial.begin(9600);
     phSerial.begin(9600); 
+    pinMode(13,OUTPUT);
 }
 
 // Data RX/TX
@@ -83,8 +84,6 @@ void loop(){
     wait();
     
     dht.readData();
-
-    delay(1000);
 
     // Format Data
     String data;
