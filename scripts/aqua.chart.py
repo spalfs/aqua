@@ -15,15 +15,11 @@ priority = 90000
 retries = 60
 
 charts = []
-charts.append(("aqua.roomTemperature",'','A random number','random number','random','random','line'))
-charts.append(("aqua.roomHumidity",'','A random number','random number','random','random','line'))
-charts.append(("aqua.tankTemperature",'','A random number','random number','random','random','line'))
-charts.append(("aqua.tankLevel",'','A random number','random number','random','random','line'))
-charts.append(("aqua.rightLight",'','A random number','random number','random','random','line'))
-charts.append(("aqua.leftLight",'','A random number','random number','random','random','line'))
-charts.append(("aqua.tankLight",'','A random number','random number','random','random','line'))
-charts.append(("aqua.roomLight",'','A random number','random number','random','random','line'))
-charts.append(("aqua.tankpH",'','A random number','random number','random','random','line'))
+charts.append(("aqua.Temperature",'','A random number','degrees (F)','random','random','area'))
+charts.append(("aqua.Humidity",'','A random number','percent','random','random','line'))
+charts.append(("aqua.tankLevel",'','A random number','inches','random','random','line'))
+charts.append(("aqua.Light",'','A random number','out of 1200','random','random','line'))
+charts.append(("aqua.tankpH",'','A random number','ppi','random','random','line'))
 
 class Service(SimpleService):
     def __init__(self, configuration=None, name=None):
@@ -38,8 +34,30 @@ class Service(SimpleService):
     def create(self):
         for c in charts:
             self.chart(c[0],c[1],c[2],c[3],c[4],c[5],c[6],self.priority,self.update_every)
-            self.dimension("Value")
-            self.commit()
+            if(c[0]=="aqua.Temperature"):
+                self.dimension("Room")
+                self.commit()
+                self.dimension("Water")
+                self.commit()
+            elif(c[0]=="aqua.Humidity"):
+                self.dimension("Humidity")
+                self.commit()
+            elif(c[0]=="aqua.tankLevel"):
+                self.dimension("Level")
+                self.commit()
+            elif(c[0]=="aqua.Light"):
+                self.dimension("Left")
+                self.commit()
+                self.dimension("Right")
+                self.commit()
+                self.dimension("Tank")
+                self.commit()
+                self.dimension("Room")
+                self.commit()
+            elif(c[0]=="aqua.tankpH"):
+                self.dimension("pH")
+                self.commit()
+
         return True
 
     def update(self, interval):
@@ -51,16 +69,36 @@ class Service(SimpleService):
             data = data.replace("'","")
             data = data.replace('"','')
             data = data.split(",")
-            fdata = []
+
+        fdata = []
         for d in data:
             fdata.append(float(d))
 
-        i = 0
         for c in charts:
             self.begin(c[0], interval)
-            self.set("Value", fdata[i])
-            self.end()
-            self.commit()
-            i = i + 1
+            if(c[0]=="aqua.Temperature"):
+                self.set("Room", fdata[0])
+                self.set("Water", fdata[2])
+                self.end()
+                self.commit()
+            elif(c[0]=="aqua.Humidity"):
+                self.set("Humidity", fdata[1])
+                self.end()
+                self.commit()
+            elif(c[0]=="aqua.tankLevel"):
+                self.set("Level", fdata[3])
+                self.end()
+                self.commit()
+            elif(c[0]=="aqua.Light"):
+                self.set("Left", fdata[5])
+                self.set("Right", fdata[4])
+                self.set("Tank", fdata[6])
+                self.set("Room", fdata[7])
+                self.end()
+                self.commit()
+            elif(c[0]=="aqua.tankpH"):
+                self.set("pH", fdata[8])
+                self.end()
+                self.commit()
 
         return True

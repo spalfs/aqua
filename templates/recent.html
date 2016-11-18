@@ -1,30 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
     {% for graph in graphs %}
-        {% if (loop.index == 1 or loop.index == 3) %}   
-        <tr>
-        {% endif %}
-            <td>
+            <tr>
                 <h1>{{ graph.title }}</h1>
                 <div data-netdata={{ graph.data }}
                      data-colors={{ graph.color }}>
                 </div>
-            </td>
-        {% if (loop.index == 2 or loop.index == 4) %}
-        </tr>
-        {% endif %}
+            </tr>
     {% endfor %} 
     {% for graph in systemGraphs %}
-        {% if (loop.index == 1 or loop.index == 3) %}   
-        <tr>
-        {% endif %}
-            <td>
+            <tr>
                 <h1>{{ graph.title }}</h1>
                 <div data-netdata={{ graph.data }}>
                 </div>
-            </td>
-        {% if (loop.index == 2 or loop.index == 4) %}
-        </tr>
-        {% endif %}
+            </tr>
     {% endfor %}
 {% endblock %}

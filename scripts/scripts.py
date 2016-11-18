@@ -1,31 +1,54 @@
 import subprocess
 
+class dimension():
+    def __init__(self,title):
+        self.title = title
+
 class graph():
-    def __init__(self,title,data,units,color):
+    def __init__(self,title,data,units,color,dimensions):
         self.title = title
         self.data  = data
         self.units = units
         self.color = color
+        self.dimensions = dimensions
 
 def createGraphs():
     graphs = list()
 
-    graphs.append(graph("Room Temperature", "aqua.roomTemperature", "degrees (F)", "#ff5555"))
-    graphs.append(graph("Room Humidity", "aqua.roomHumidity", "percent", "#55ffaa"))
-    graphs.append(graph("Room Lighting", "aqua.roomLight", "percent", "#5555ff"))
-    graphs.append(graph("Tank Temperature", "aqua.tankTemperature", "degrees (F)", "#55ffff"))
-    graphs.append(graph("Tank pH", "aqua.tankpH", "ppi", "#ffaa55"))
-    graphs.append(graph("Tank Water Level", "aqua.tankLevel", "inches", "#aaff55"))
+    d = []
+    d.append(dimension("Room"))
+    d.append(dimension("Water"))
+    graphs.append(graph("Temperature", "aqua.Temperature", "degrees (F)", "", d))
+
+    d = []
+    d.append(dimension("Humidity"))
+    graphs.append(graph("Room Humidity", "aqua.Humidity", "percent", "#55ffaa", d))
+
+    d = []
+    d.append(dimension("Left"))
+    d.append(dimension("Right"))
+    d.append(dimension("Tank"))
+    d.append(dimension("Room"))
+    graphs.append(graph("Lighting", "aqua.Light", "percent", "", d))
+
+    d = []
+    d.append(dimension("pH"))
+    graphs.append(graph("pH", "aqua.tankpH", "ppi", "#ffaa55", d))
+
+    d = []
+    d.append(dimension("Level"))
+    graphs.append(graph("Water Level", "aqua.tankLevel", "inches", "#aaff55", d))
 
     return graphs
 
 def createSystemGraphs():
     graphs = list()
 
-    graphs.append(graph("CPU Utilization", "system.cpu"," "," "))
-    graphs.append(graph("System Load", "system.load"," "," "))
-    graphs.append(graph("Disk I/O", "system.io"," "," "))
-    graphs.append(graph("System Memory", "system.ram"," "," "))
+    d = []
+    graphs.append(graph("CPU Utilization", "system.cpu"," "," ",d))
+    graphs.append(graph("System Load", "system.load"," "," ",d))
+    graphs.append(graph("Disk I/O", "system.io"," "," ",d))
+    graphs.append(graph("System Memory", "system.ram"," "," ",d))
 
     return graphs
 
