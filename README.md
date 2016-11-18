@@ -15,18 +15,6 @@ Installation for Debian:
         Enter
         "exit"
 
-    Then run it (if it is not already running)-
-        "su"
-        "/usr/sbin/netdata"
-        "exit"
-    
-    Also make it run at every boot - 
-        "su"
-        "nano /etc/rc.local"
-        Append "/usr/sbin/netdata" before the exit
-        Ctrl-X, Y, Enter
-        "exit"
-
     The python plugins must be moved into netdata's plugin folder - 
     	"su"
         "cp scripts/*.plugin /usr/libexec/netdata/plugins.d/"
@@ -46,10 +34,5 @@ Installation for Debian:
         If you are having issues, goto line 7 of server.py and set the ip yourself
 
     THINGS TO DO - 
-        Look into new netdata python plugin system and reimplement ours
-        Look if local dns server is worth doing
-        Python script to read from usb, write to database, and pipe to netdata (started with .wsgi, server, or rc.local)
         Add matplotlib image generator to server
-        Look into making the host a wifi connectable switch
-        Flesh out .ino
         Make installer
