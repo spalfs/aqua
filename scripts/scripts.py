@@ -22,7 +22,7 @@ def createGraphs():
 
     d = []
     d.append(dimension("Humidity"))
-    graphs.append(graph("Room Humidity", "aqua.Humidity", "percent", "#55ffaa", d))
+    graphs.append(graph("Humidity", "aqua.Humidity", "percent", "#55ffaa", d))
 
     d = []
     d.append(dimension("Left"))

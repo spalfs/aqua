@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+        </br>
         {% set count = [0] %}
         {% for graph in graphs %}
             {% for dim in graph.dimensions %}
+            {% if graph.title == "Lighting" %}
+            {% else %}
             {% if (count[0] == 0) %}
             <tr>
             {% endif %}
@@ -21,6 +24,7 @@
             </tr>
             <tr>
             {% endif %}      
+            {% endif %}
             {% if count.append(count.pop()+1) %}{% endif %}
             {% endfor %}
         {% endfor %}      

@@ -35,12 +35,12 @@ class Service(SimpleService):
         for c in charts:
             self.chart(c[0],c[1],c[2],c[3],c[4],c[5],c[6],self.priority,self.update_every)
             if(c[0]=="aqua.Temperature"):
-                self.dimension("Room")
+                self.dimension("Room","Room","absolute","1000","1000")
                 self.commit()
-                self.dimension("Water")
+                self.dimension("Water","Water","absolute","1000","1000")
                 self.commit()
             elif(c[0]=="aqua.Humidity"):
-                self.dimension("Humidity")
+                self.dimension("Humidity","Humidity","absolute","1000","1000")
                 self.commit()
             elif(c[0]=="aqua.tankLevel"):
                 self.dimension("Level")
@@ -55,7 +55,7 @@ class Service(SimpleService):
                 self.dimension("Room")
                 self.commit()
             elif(c[0]=="aqua.tankpH"):
-                self.dimension("pH")
+                self.dimension("pH","pH","absolute","1000","1000")
                 self.commit()
 
         return True
