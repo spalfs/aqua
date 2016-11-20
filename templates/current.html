@@ -5,12 +5,29 @@
         {% for graph in graphs %}
             {% for dim in graph.dimensions %}
             {% if graph.title == "Lighting" %}
+            {% elif graph.title == "Water Level" %}
+            </table>
+            <table>
+                <tr>
+                    <td>
+                    <h1>{{ graph.title }}</h1>
+                    <div data-netdata={{ graph.data }}
+                         data-dimensions="{{ dim.title }}"
+                         data-chart-library="easypiechart"
+                         data-title="{{ dim.title }}"
+                         data-width=25%
+                         data-units={{ graph.units }}
+                         data-colors={{ graph.color }}>
+                    </div>
+                    </td>
+                </tr>
+            </table>
             {% else %}
             {% if (count[0] == 0) %}
             <tr>
             {% endif %}
                 <td>
-                    <h1>{{ graph.title }}</h1></a>
+                    <h1>{{ graph.title }}</h1>
                     <div data-netdata={{ graph.data }}
                          data-dimensions="{{ dim.title }}"
                          data-chart-library="easypiechart"

@@ -15,11 +15,11 @@ priority = 90000
 retries = 60
 
 charts = []
-charts.append(("aqua.Temperature",'','A random number','degrees (F)','random','random','area'))
-charts.append(("aqua.Humidity",'','A random number','percent','random','random','line'))
-charts.append(("aqua.tankLevel",'','A random number','inches','random','random','line'))
-charts.append(("aqua.Light",'','A random number','out of 1200','random','random','line'))
-charts.append(("aqua.tankpH",'','A random number','ppi','random','random','line'))
+charts.append(("aqua.Temperature",'','','degrees (F)','random','random','area'))
+charts.append(("aqua.Humidity",'','','percent','random','random','line'))
+charts.append(("aqua.tankLevel",'','','inches','random','random','line'))
+charts.append(("aqua.Light",'','','out of 1200','random','random','line'))
+charts.append(("aqua.tankpH",'','','ppi','random','random','line'))
 
 class Service(SimpleService):
     def __init__(self, configuration=None, name=None):

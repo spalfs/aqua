@@ -3,6 +3,7 @@ html{
 }
 
 h1{
+    font-size:4vw;
     margin: auto;
     text-align: center;
 }
@@ -19,7 +20,7 @@ table{
     margin-right:auto;   
     text-align: center;
     width: 90%;
-    table-layout:;
+    table-layout:fixed;
 }
 
 img{
