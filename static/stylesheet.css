@@ -28,10 +28,10 @@ img{
     margin: auto;
 }
 
-#green{
-    color: green
+li{
+    text-align:left;
+    list-style-type: none;
 }
-
-#red{ 
-    color: red
+ul{
+    text-align:left;
 }
