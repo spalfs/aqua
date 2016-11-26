@@ -35,12 +35,12 @@ class Service(SimpleService):
         for c in charts:
             self.chart(c[0],c[1],c[2],c[3],c[4],c[5],c[6],self.priority,self.update_every)
             if(c[0]=="aqua.Temperature"):
-                self.dimension("Room","Room","absolute","1000","1000")
+                self.dimension("Room","Room","absolute","1","1000")
                 self.commit()
-                self.dimension("Water","Water","absolute","1000","1000")
+                self.dimension("Water","Water","absolute","1","1000")
                 self.commit()
             elif(c[0]=="aqua.Humidity"):
-                self.dimension("Humidity","Humidity","absolute","1000","1000")
+                self.dimension("Humidity","Humidity","absolute","1","1000")
                 self.commit()
             elif(c[0]=="aqua.tankLevel"):
                 self.dimension("Level")
@@ -55,7 +55,7 @@ class Service(SimpleService):
                 self.dimension("Room")
                 self.commit()
             elif(c[0]=="aqua.tankpH"):
-                self.dimension("pH","pH","absolute","1000","1000")
+                self.dimension("pH","pH","absolute","1","1000")
                 self.commit()
 
         return True
@@ -77,12 +77,12 @@ class Service(SimpleService):
         for c in charts:
             self.begin(c[0], interval)
             if(c[0]=="aqua.Temperature"):
-                self.set("Room", fdata[0])
-                self.set("Water", fdata[2])
+                self.set("Room", fdata[0]*1000)
+                self.set("Water", fdata[2]*1000)
                 self.end()
                 self.commit()
             elif(c[0]=="aqua.Humidity"):
-                self.set("Humidity", fdata[1])
+                self.set("Humidity", fdata[1]*1000)
                 self.end()
                 self.commit()
             elif(c[0]=="aqua.tankLevel"):
@@ -97,7 +97,7 @@ class Service(SimpleService):
                 self.end()
                 self.commit()
             elif(c[0]=="aqua.tankpH"):
-                self.set("pH", fdata[8])
+                self.set("pH", fdata[8]*1000)
                 self.end()
                 self.commit()
 

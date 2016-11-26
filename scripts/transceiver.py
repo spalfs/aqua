@@ -3,6 +3,7 @@
 import serial
 from time import sleep, time
 from socket import socket, AF_INET, SOCK_STREAM
+from scripts import insert
 
 sleep(5)
 
@@ -42,5 +43,5 @@ while True:
     s.connect(("raspberrypi",6000))
     s.sendall(str.encode(r))
     s.close()
+    insert(r)
 
-    print(r)
