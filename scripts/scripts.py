@@ -132,7 +132,7 @@ def plot(data,begin,end):
     data = data.split(',')
     for i in range(len(data)):
         ny = [z[i] for z in y]
-        plt.plot_date(x,ny,label=data[i])
+        plt.plot_date(x,ny,label=data[i],linestyle='-')
 
     plt.legend()
 
