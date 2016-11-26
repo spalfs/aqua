@@ -4,8 +4,8 @@
         <form method="post">
             {{ form.csrf_token }}
             <td> {{ form.rField() }} </td>
-            <td> Start Date </td>
-            <td> End Data   </td>
+            <td> Start Date: </br> {{ form.sField() }} </td>
+            <td> End Date: </br> {{ form.eField() }}  </td>
             <td> <input type=submit value=Submit> </td>
         </form>
     </tr>
