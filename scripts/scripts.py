@@ -5,6 +5,7 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 
+
 class dimension():
     def __init__(self,title):
         self.title = title
@@ -123,6 +124,7 @@ def plot(data,begin,end):
     x = c.fetchall()
     c.execute("SELECT %s FROM data WHERE date LIKE '%%%s%%'" % (data,begin))
     y = c.fetchall()
+    conn.close()
 
     fig, ax = plt.subplots(1)
     fig.autofmt_xdate()
@@ -135,10 +137,10 @@ def plot(data,begin,end):
         plt.plot_date(x,ny,label=data[i],linestyle='-')
 
     plt.legend()
+    plt.gca().xaxis.set_major_formatter(mpl.dates.DateFormatter("%H:%M"))
+    plt.draw()
 
     plt.savefig('/home/pi/Desktop/aqua/static/plot_bmh.png',bbox_inches='tight')
-
-    conn.close()
 
 def getUniqueDates():
     conn = sqlite3.connect('/mnt/data.db')
@@ -152,5 +154,3 @@ def getUniqueDates():
         xL.append((i[0],i[0]))
 
     return xL
-
-

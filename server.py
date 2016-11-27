@@ -51,5 +51,10 @@ def all():
         print (form.errors)
     return render_template('all.html', layout = "all", ip = ip, form = form)
 
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
