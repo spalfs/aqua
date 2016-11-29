@@ -96,7 +96,7 @@ def insert(d):
         ph    REAL)''')
 
     except:
-        print("data.db already created")
+        pass
 
     dnow = datetime.now().date()
     tnow = datetime.now().time()
@@ -107,6 +107,7 @@ def insert(d):
 
     conn.commit()
     conn.close()
+    print("Successfull Insertion.")
 
 def plot(data,begin,end):
 
