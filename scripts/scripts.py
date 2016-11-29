@@ -127,7 +127,7 @@ def plot(data,begin,end):
     dend   = datetime.strptime(end,  "%Y-%m-%d").date()
 
     while(dbegin != (dend + timedelta(days=1))):
-        c.execute("SELECT time FROM data WHERE date LIKE '%%%s%%'" % (dbegin))
+        c.execute("SELECT time, date FROM data WHERE date LIKE '%%%s%%'" % (dbegin))
         xALL = xALL + c.fetchall()
         c.execute("SELECT %s FROM data WHERE date LIKE '%%%s%%'" % (data,dbegin))
         yALL = yALL + c.fetchall()
@@ -138,10 +138,15 @@ def plot(data,begin,end):
     xALL = xALL[1:]
     yALL = yALL[1:]
 
+    x = []
+    for i in xALL:
+        x.append(i[1]+" "+i[0])
+
+
     fig, ax = plt.subplots(1)
     fig.autofmt_xdate()
 
-    xALL = mpl.dates.datestr2num(xALL)
+    xALL = mpl.dates.datestr2num(x)
 
     data = data.split(',')
     for i in range(len(data)):
@@ -149,7 +154,7 @@ def plot(data,begin,end):
         plt.plot_date(xALL,ny,label=data[i],linestyle='-')
 
     plt.legend()
-    plt.gca().xaxis.set_major_formatter(mpl.dates.DateFormatter("%H:%M"))
+    plt.gca().xaxis.set_major_formatter(mpl.dates.DateFormatter("%m/%d \n %H:%M"))
     plt.draw()
 
     plt.savefig('/home/pi/Desktop/aqua/static/plot_bmh.png',bbox_inches='tight')
