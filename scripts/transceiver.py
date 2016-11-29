@@ -5,8 +5,6 @@ from time import sleep, time
 from socket import socket, AF_INET, SOCK_STREAM
 from scripts import insert
 
-sleep(5)
-
 comms = serial.Serial('/dev/ttyUSB0', 9600, timeout = None)
 w = "on"
 start = time()

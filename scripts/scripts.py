@@ -120,21 +120,33 @@ def plot(data,begin,end):
     conn = sqlite3.connect('/mnt/data.db')
     c = conn.cursor()
 
-    c.execute("SELECT time FROM data WHERE date LIKE '%%%s%%'" % (begin))
-    x = c.fetchall()
-    c.execute("SELECT %s FROM data WHERE date LIKE '%%%s%%'" % (data,begin))
-    y = c.fetchall()
+    xALL = [()]
+    yALL = [()]
+
+    dbegin = datetime.strptime(begin,"%Y-%m-%d").date()
+    dend   = datetime.strptime(end,  "%Y-%m-%d").date()
+
+    while(dbegin != (dend + timedelta(days=1))):
+        c.execute("SELECT time FROM data WHERE date LIKE '%%%s%%'" % (dbegin))
+        xALL = xALL + c.fetchall()
+        c.execute("SELECT %s FROM data WHERE date LIKE '%%%s%%'" % (data,dbegin))
+        yALL = yALL + c.fetchall()
+        dbegin = dbegin + timedelta(days=1)
+
     conn.close()
+
+    xALL = xALL[1:]
+    yALL = yALL[1:]
 
     fig, ax = plt.subplots(1)
     fig.autofmt_xdate()
 
-    x = mpl.dates.datestr2num(x)
+    xALL = mpl.dates.datestr2num(xALL)
 
     data = data.split(',')
     for i in range(len(data)):
-        ny = [z[i] for z in y]
-        plt.plot_date(x,ny,label=data[i],linestyle='-')
+        ny = [z[i] for z in yALL]
+        plt.plot_date(xALL,ny,label=data[i],linestyle='-')
 
     plt.legend()
     plt.gca().xaxis.set_major_formatter(mpl.dates.DateFormatter("%H:%M"))
