@@ -17,7 +17,7 @@ retries = 60
 charts = []
 charts.append(("aqua.Temperature",'','','degrees (F)','random','random','area'))
 charts.append(("aqua.Humidity",'','','percent','random','random','line'))
-charts.append(("aqua.tankLevel",'','','inches','random','random','line'))
+charts.append(("aqua.tankLevel",'','','out of 1200','random','random','line'))
 charts.append(("aqua.Light",'','','out of 1200','random','random','line'))
 charts.append(("aqua.tankpH",'','','ppi','random','random','line'))
 
