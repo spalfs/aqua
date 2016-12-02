@@ -9,6 +9,8 @@ Installation for Debian:
         "dselect update"
         "dpkg --set-selections < configs/Package.list"
         "apt deslect-upgrade -y"
+        "pip install -r pip.list"
+        "pip3 install -r pip3.list"
 
     Install netdata -
         "git clone https://github.com/firehol/netdata"
