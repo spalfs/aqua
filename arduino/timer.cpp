@@ -13,7 +13,7 @@ void loop(){
     digitalWrite(13,LOW);
     wait(30*1000);
     wait(30*1000);
-    wait(30*1000);
     digitalWrite(13,HIGH);
+    wait(30*1000);
     wait(30*1000);
 }

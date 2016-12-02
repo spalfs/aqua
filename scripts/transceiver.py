@@ -17,12 +17,12 @@ while True:
     timer = time() - start
 
     if w == "on":
-        if (timer > 90):
+        if (timer > 60):
             start = time()
             w = "off"
             send = True
     else:
-        if (timer > 30):
+        if (timer > 60):
             start = time()
             w = "on"
             send = True

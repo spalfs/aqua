@@ -43,7 +43,7 @@ def createGraphs():
 
     d = []
     d.append(dimension("Level"))
-    graphs.append(graph("Water Level", "aqua.tankLevel", "", "#aaff55", d))
+    graphs.append(graph("Water Level", "aqua.tankLevel", "of1200", "#aaff55", d))
 
     return graphs
 
