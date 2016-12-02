@@ -13,8 +13,8 @@ iface lo inet loopback
 iface eth0 inet dhcp
 
 #comment below if you want wifi, uncomment if you want access point
-#allow-hotplug wlan0
-#iface wlan0 inet static
-#address 10.0.0.1
-#netmask 255.255.255.0
+allow-hotplug wlan0
+iface wlan0 inet static
+address 10.0.0.1
+netmask 255.255.255.0
 
