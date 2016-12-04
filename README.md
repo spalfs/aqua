@@ -32,6 +32,9 @@ Installation for Debian:
         "cp configs/hostapd.conf    /etc/hostapd/hostapd.conf"
         "cp configs/isc-dhcp-server /etc/default/isc-dhcp-server"
         "cp configs/sysctl.conf     /etc/sysctl.conf"
+        
+    Upload main.cpp to the arduino -
+        "./arduino/upload"
 
     To have data transmitted to the server - 
         "./scripts/transceiver.py"
